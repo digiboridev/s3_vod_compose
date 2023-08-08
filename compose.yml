@@ -1,0 +1,15 @@
+version: "3"
+
+services:
+  nginx:
+    build:
+      context: .
+      dockerfile: dockerfile
+    expose:
+      - 80
+    ports:
+      - 3000:80
+    volumes:
+      - ./videos:/opt/static/videos
+      - ./nginx.conf:/usr/local/nginx/conf/nginx.conf
+    restart: unless-stopped
